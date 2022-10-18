@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Блокнот</title>
+    <script   src="js/vue.min.js"></script>
+    <script  defer src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+    <div class="stats">
+        <h3 class="stats__title">{{"Мои дела: "+ tasks.length}}</h3>
+    </div>
+    <task @task_done="delete_task(index)" :key="index" v-for="(data,index) in tasks" :data="data" ></task>
+    <div class="add_task">
+        <div class="add_task__input ">
+            <input placeholder="Новая задача..." type="text" v-model="new_task.title">
+            <textarea placeholder="Описание" type="text" v-model="new_task.desc"></textarea>
+        </div>
+        <button class="add_task__btn" @click="add_task">Добавить</button>
+    </div>
+</div>
+
+</body>
+</html>
